@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+pandas
+numpy
+scikit-learn
+xgboost
+shap
+matplotlib
+seaborn
+joblib
+pydantic
+pydantic-settings
+sqlalchemy
+psycopg[binary]
+ortools
+faker
+python-multipart

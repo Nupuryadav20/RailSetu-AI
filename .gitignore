@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+
+data/raw/*
+data/processed/*
+data/synthetic/*
+
+backend/artifacts/*
+!backend/artifacts/.gitkeep
+
+.ipynb_checkpoints/
+node_modules/
+dist/
+build/
