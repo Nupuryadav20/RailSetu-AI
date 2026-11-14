@@ -2,10 +2,23 @@
 ### AI-Powered Railway Predictive Maintenance and Automatic Block Planning System
 
 <p align="center">
-
-**Predictive Maintenance | Risk Assessment | Maintenance Prioritization | Automatic Block Planning**
-
+**Predictive Maintenance (Concept A) | Dataset Risk Score (Concept B) | Operational Priority & CP-SAT Scheduling (Concept C)**
 </p>
+
+> **⚠️ Academic Prototype & Data Notice:** RailSetu AI is an academic research prototype. All experiments, predictions, and schedules run on a 100,000-record synthetic/simulated benchmark dataset from Kaggle. **It is NOT connected to live Indian Railways, CRIS, or Ministry of Railways telematics.** The machine learning model exhibits modest discriminative power (ROC-AUC ~0.55 on leak-free features), reflecting the weak signal present in the synthetic data. It is intended for decision support only and is NOT a certified railway safety system.
+
+---
+
+## Visual Tour (Dashboard & System Interfaces)
+
+| Interface | Preview (1440px Desktop) | Description |
+|---|---|---|
+| **Operations Dashboard** | ![Dashboard](docs/screenshots/dashboard_desktop.png) | High-level KPIs (500 requests, 275 scheduled, 225 unscheduled), CP-SAT capacity bar, and active V5 model status. |
+| **Predictive Maintenance** | ![Predictive Maintenance](docs/screenshots/predictive_maintenance_desktop.png) | Validated 30-feature telemetry form, failure probability %, decision banner, top-5 local SHAP attributions, real-time z-score anomaly detection, and persistent SQLite history. |
+| **Maintenance Register** | ![Maintenance Requests](docs/screenshots/maintenance_requests_desktop.png) | Rebuilt enterprise filter card (department, priority, corridor dropdowns), sortable table, risk mini-bars, pagination, and slide-over details drawer. |
+| **Block Planning** | ![Block Planning](docs/screenshots/block_planning_desktop.png) | OR-Tools CP-SAT corridor network schematic, interval possessions, and unscheduled request backlog breakdown. |
+| **Model Insights (v5)** | ![Model Insights](docs/screenshots/model_insights_desktop.png) | "Model in Production" banner, 10-model ranking table with statistical-tie detection ($\le 1\sigma$), selection rule breakdown (English + Hinglish), empirical verdict, ROC/PR curves, and MLflow run tracing. |
+| **Governance & Policy** | ![Privacy Policy](docs/screenshots/privacy_policy_desktop.png) | Explicit academic disclaimers, synthetic data provenance, and telemetry privacy commitments. |
 
 ---
 
@@ -63,24 +76,61 @@ The major objectives are:
 
 ## 4. Technology Stack
 
-| Component | Technologies |
+| Layer | Technologies |
 |---|---|
-| Programming Language | Python |
-| Data Processing | Pandas, NumPy |
-| Visualization | Matplotlib, Seaborn |
-| Machine Learning | Scikit-learn, XGBoost |
-| Model Explainability | SHAP |
-| Model Persistence | Joblib |
-| Backend Framework | FastAPI |
-| API Validation | Pydantic |
-| API Testing | Pytest, FastAPI TestClient |
-| Data Storage | CSV-based artifacts |
-| Development Environment | VS Code, Python Virtual Environment |
-| Optimization | Priority-based scheduling and block allocation |
+| **Backend & API** | Python 3.11+, FastAPI, Uvicorn, Pydantic v2, SQLAlchemy 2 |
+| **Database** | SQLite (`data/railsetu.db`), Alembic / Python seeder |
+| **Machine Learning** | Scikit-learn 1.6, XGBoost 2.1, LightGBM 4.7, CatBoost 1.2, Optuna 5.0, Joblib, MLflow 2.19 |
+| **Model Explainability** | SHAP (TreeExplainer) |
+| **Block Optimization** | Google OR-Tools CP-SAT (Constraint Programming) |
+| **Frontend Dashboard** | React 19, TypeScript, Vite, Tailwind CSS v4, Lucide Icons, Axios |
+| **Automated Testing** | Pytest 9.2, FastAPI TestClient (67 tests passing) |
+| **Visualization & Reporting** | Matplotlib, Seaborn, KaTeX |
 
-**Architecture note:** The current backend is a modular FastAPI application. It is not yet implemented as a distributed microservices architecture. The database integration and frontend dashboard are future development areas.
+---
 
-## 5. Dataset and Data Preparation
+## 5. Quickstart & Installation
+
+### Backend Setup
+```bash
+# Clone and enter directory
+cd RailSetu-AI
+
+# Activate Python virtual environment
+source .venv/bin/activate
+
+# Install dependencies if not already present
+pip install -r requirements.txt
+
+# Seed relational database (creates data/railsetu.db)
+python -m scripts.seed_db
+
+# Run all 67 backend tests
+PYTHONPATH=. pytest tests/ -v
+
+# Start FastAPI server (runs on port 8000)
+uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
+```
+
+### Frontend Setup
+```bash
+cd frontend
+
+# Install Node dependencies
+npm install
+
+# Build production bundle (tsc -b && vite build)
+npm run build
+
+# Start local development server (runs on port 5173)
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## 6. Dataset and Data Preparation
 
 ### Dataset
 

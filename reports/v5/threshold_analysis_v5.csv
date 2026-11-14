@@ -1,0 +1,11 @@
+threshold,precision,recall,f1,f2,tp,fp,tn,fn,pct_flagged,operational_character
+0.05,0.20195,1.0,0.33604,0.55855,4039,15961,0,0,100.0,Overwhelms fleet; 100% false alarms
+0.1,0.20195,1.0,0.33604,0.55855,4039,15961,0,0,100.0,Overwhelms fleet; 100% false alarms
+0.15,0.20195,1.0,0.33604,0.55855,4039,15961,0,0,100.0,Overwhelms fleet; 100% false alarms
+0.2,0.20191,0.99975,0.33597,0.55843,4038,15961,0,1,100.0,Overwhelms fleet; 100% false alarms
+0.25,0.20195,0.99926,0.336,0.55837,4036,15949,12,3,99.92,Overwhelms fleet; 100% false alarms
+0.3,0.2023,0.99777,0.33639,0.55853,4030,15891,70,9,99.61,Overwhelms fleet; 100% false alarms
+0.35,0.20247,0.98465,0.33588,0.55548,3977,15665,296,62,98.21,Overwhelms fleet; 100% false alarms
+0.4,0.20344,0.93191,0.33397,0.54302,3764,14738,1223,275,92.51,High recall screening; heavy inspection burden
+0.45,0.21094,0.718,0.32608,0.48488,2900,10848,5113,1139,68.74,High recall screening; heavy inspection burden
+0.5,0.29104,0.25724,0.2731,0.26336,1039,2531,13430,3000,17.85,Conservative fallback; misses ~75% of candidate faults

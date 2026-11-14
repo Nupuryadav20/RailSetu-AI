@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <rect width="1200" height="700" fill="#EEF1F4"/>
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="240" height="700" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="24" y="45" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0F172A">RAILSETU <tspan fill="#3B6FE8">AI</tspan></text>
+  <text x="32" y="124" font-family="sans-serif" font-size="13" fill="#475569">Overview</text>
+  <text x="32" y="165" font-family="sans-serif" font-size="13" fill="#475569">Predictive Maintenance</text>
+  <text x="32" y="205" font-family="sans-serif" font-size="13" fill="#475569">Maintenance Requests</text>
+  <text x="32" y="245" font-family="sans-serif" font-size="13" fill="#475569">Block Planning</text>
+  <text x="32" y="285" font-family="sans-serif" font-size="13" fill="#475569">Model Insights</text>
+  <rect x="16" y="620" width="208" height="38" rx="8" fill="#EFF6FF"/>
+  <text x="32" y="644" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1D4ED8">Privacy &amp; Policy</text>
+  <!-- Topbar -->
+  <rect x="240" y="0" width="960" height="65" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="270" y="38" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0F172A">Privacy, Data Provenance &amp; Safety Policy</text>
+  <!-- Main Panel -->
+  <rect x="270" y="95" width="895" height="575" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="300" y="140" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0F172A">1. Synthetic Data Notice</text>
+  <text x="300" y="170" font-family="sans-serif" font-size="13" fill="#4B5563">RailSetu AI uses synthetic/simulated railway failure data (100k rows). NOT live Indian Railways / CRIS data.</text>
+  <text x="300" y="225" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0F172A">2. Non-Certified Academic Prototype</text>
+  <text x="300" y="255" font-family="sans-serif" font-size="13" fill="#4B5563">The system is for research &amp; decision support. ROC-AUC ~0.55. Not certified under safety signaling standards.</text>
+  <text x="300" y="310" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0F172A">3. Separation of Concepts</text>
+  <text x="300" y="340" font-family="sans-serif" font-size="13" fill="#4B5563">• Concept A: ML Probability (0-100%) | Concept B: Dataset risk_score | Concept C: Operational Priority Score</text>
+  <text x="300" y="395" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0F172A">4. In-Memory Session History</text>
+  <text x="300" y="425" font-family="sans-serif" font-size="13" fill="#4B5563">Prediction history maintains a fixed rolling buffer of max 50 items. Raw telemetry is not saved to disk.</text>
+</svg>

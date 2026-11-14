@@ -1,0 +1,86 @@
+[
+  {
+    "example": 1,
+    "predicted_probability": 0.4739,
+    "predicted_class": 1,
+    "true_class": 0,
+    "top_shap_contributors": [
+      {
+        "feature": "traction_motor_temp_c",
+        "shap_value": -0.06999
+      },
+      {
+        "feature": "average_speed_kmph",
+        "shap_value": 0.06846
+      },
+      {
+        "feature": "ballast_condition",
+        "shap_value": -0.05771
+      },
+      {
+        "feature": "last_maintenance_days",
+        "shap_value": 0.04427
+      },
+      {
+        "feature": "rail_wear_mm",
+        "shap_value": -0.02872
+      }
+    ]
+  },
+  {
+    "example": 2,
+    "predicted_probability": 0.4146,
+    "predicted_class": 1,
+    "true_class": 1,
+    "top_shap_contributors": [
+      {
+        "feature": "rail_wear_mm",
+        "shap_value": -0.1657
+      },
+      {
+        "feature": "ambient_temperature_c",
+        "shap_value": 0.10325
+      },
+      {
+        "feature": "brake_pressure_psi",
+        "shap_value": -0.09157
+      },
+      {
+        "feature": "ballast_condition",
+        "shap_value": 0.08384
+      },
+      {
+        "feature": "track_temperature_c",
+        "shap_value": -0.04479
+      }
+    ]
+  },
+  {
+    "example": 3,
+    "predicted_probability": 0.3765,
+    "predicted_class": 1,
+    "true_class": 1,
+    "top_shap_contributors": [
+      {
+        "feature": "wind_speed_kmph",
+        "shap_value": 0.16073
+      },
+      {
+        "feature": "distance_travelled_km",
+        "shap_value": 0.076
+      },
+      {
+        "feature": "wheel_wear_percent",
+        "shap_value": -0.06216
+      },
+      {
+        "feature": "load_factor_percent",
+        "shap_value": 0.06094
+      },
+      {
+        "feature": "track_vibration_level",
+        "shap_value": 0.05035
+      }
+    ]
+  }
+]

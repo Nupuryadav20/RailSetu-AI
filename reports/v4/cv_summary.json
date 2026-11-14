@@ -1,0 +1,12 @@
+{
+  "model": "XGBoost",
+  "cv_folds": 5,
+  "val_roc_auc_mean": 0.5495,
+  "val_roc_auc_std": 0.0026,
+  "val_pr_auc_mean": 0.3274,
+  "val_pr_auc_std": 0.0045,
+  "val_f1_mean": 0.2615,
+  "val_f1_std": 0.0068,
+  "train_roc_auc_mean": 0.9366,
+  "overfitting_gap_roc_auc": 0.3871
+}

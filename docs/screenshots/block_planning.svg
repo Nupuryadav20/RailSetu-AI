@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <rect width="1200" height="700" fill="#EEF1F4"/>
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="240" height="700" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="24" y="45" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0F172A">RAILSETU <tspan fill="#3B6FE8">AI</tspan></text>
+  <text x="32" y="124" font-family="sans-serif" font-size="13" fill="#475569">Overview</text>
+  <text x="32" y="165" font-family="sans-serif" font-size="13" fill="#475569">Predictive Maintenance</text>
+  <text x="32" y="205" font-family="sans-serif" font-size="13" fill="#475569">Maintenance Requests</text>
+  <rect x="16" y="225" width="208" height="38" rx="8" fill="#EFF6FF"/>
+  <text x="32" y="249" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1D4ED8">Block Planning</text>
+  <text x="32" y="290" font-family="sans-serif" font-size="13" fill="#475569">Model Insights</text>
+  <!-- Topbar -->
+  <rect x="240" y="0" width="960" height="65" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="270" y="38" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0F172A">Constraint Optimization: CP-SAT Block Planning</text>
+  <!-- KPI Banner -->
+  <rect x="270" y="85" width="895" height="75" rx="14" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="300" y="115" font-family="sans-serif" font-size="11" fill="#64748B">SCHEDULED POSSESSIONS</text>
+  <text x="300" y="145" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2E9E3E">275 Requests</text>
+  <text x="520" y="115" font-family="sans-serif" font-size="11" fill="#64748B">UNSCHEDULED BACKLOG</text>
+  <text x="520" y="145" font-family="sans-serif" font-size="22" font-weight="bold" fill="#E11D48">225 Requests</text>
+  <text x="740" y="115" font-family="sans-serif" font-size="11" fill="#64748B">AVAILABLE WINDOWS</text>
+  <text x="740" y="145" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2563EB">140 Windows</text>
+  <text x="960" y="115" font-family="sans-serif" font-size="11" fill="#64748B">TRACK OVERLAPS</text>
+  <text x="960" y="145" font-family="sans-serif" font-size="22" font-weight="bold" fill="#166534">0 (Zero)</text>
+  <!-- Corridor Allocation Schematic -->
+  <rect x="270" y="180" width="895" height="170" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="295" y="210" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0F172A">Corridor Allocation Schematic (Real Schedule Data)</text>
+  <rect x="295" y="230" width="260" height="95" rx="8" fill="#F9FAFB" stroke="#E5E7EB"/>
+  <text x="310" y="255" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">Northern Trunk Route (128 Req)</text>
+  <text x="310" y="275" font-family="sans-serif" font-size="11" fill="#166534">Scheduled: 72 (56%)</text>
+  <text x="430" y="275" font-family="sans-serif" font-size="11" fill="#991B1B">Unscheduled: 56</text>
+  <rect x="310" y="290" width="230" height="8" rx="4" fill="#FEE2E2"/>
+  <rect x="310" y="290" width="129" height="8" rx="4" fill="#2E9E3E"/>
+  <rect x="585" y="230" width="260" height="95" rx="8" fill="#F9FAFB" stroke="#E5E7EB"/>
+  <text x="600" y="255" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">Western Corridor (142 Req)</text>
+  <text x="600" y="275" font-family="sans-serif" font-size="11" fill="#166534">Scheduled: 80 (56%)</text>
+  <text x="720" y="275" font-family="sans-serif" font-size="11" fill="#991B1B">Unscheduled: 62</text>
+  <rect x="600" y="290" width="230" height="8" rx="4" fill="#FEE2E2"/>
+  <rect x="600" y="290" width="129" height="8" rx="4" fill="#2E9E3E"/>
+  <rect x="875" y="230" width="260" height="95" rx="8" fill="#F9FAFB" stroke="#E5E7EB"/>
+  <text x="890" y="255" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">Eastern High-Density (115 Req)</text>
+  <text x="890" y="275" font-family="sans-serif" font-size="11" fill="#166534">Scheduled: 64 (56%)</text>
+  <text x="1010" y="275" font-family="sans-serif" font-size="11" fill="#991B1B">Unscheduled: 51</text>
+  <rect x="890" y="290" width="230" height="8" rx="4" fill="#FEE2E2"/>
+  <rect x="890" y="290" width="129" height="8" rx="4" fill="#2E9E3E"/>
+  <!-- Tabbed Register Panel -->
+  <rect x="270" y="370" width="895" height="300" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="295" y="405" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0F172A">Optimized Maintenance Schedule Register</text>
+  <line x1="295" y1="425" x2="1140" y2="425" stroke="#E2E8F0"/>
+  <text x="295" y="455" font-family="sans-serif" font-size="12" fill="#64748B">REQ-082 | Corridor-Northern | Traction | Duration: 2.5h | Window: BW-104 | Start: 02:00 | Score: 88.5</text>
+  <text x="295" y="490" font-family="sans-serif" font-size="12" fill="#64748B">REQ-019 | Corridor-Western | Engineering | Duration: 3.0h | Window: BW-044 | Start: 01:30 | Score: 82.1</text>
+  <text x="295" y="525" font-family="sans-serif" font-size="12" fill="#64748B">REQ-044 | Corridor-Eastern | S&amp;T | Duration: 1.5h | Window: BW-012 | Start: 04:00 | Score: 79.4</text>
+  <text x="295" y="560" font-family="sans-serif" font-size="12" fill="#64748B">REQ-105 | Corridor-Southern | Traction | Duration: 2.0h | Window: BW-098 | Start: 02:30 | Score: 75.8</text>
+  <text x="295" y="595" font-family="sans-serif" font-size="12" fill="#64748B">REQ-134 | Corridor-Central | Engineering | Duration: 4.0h | Window: BW-071 | Start: 00:30 | Score: 73.2</text>
+</svg>

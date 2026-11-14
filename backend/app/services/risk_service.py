@@ -112,7 +112,8 @@ def score_records(records):
         )
 
     try:
-        model, metadata, _ = load_model_bundle()
+        bundle = load_model_bundle()
+        model, metadata = bundle[0], bundle[1]
         input_df = pd.DataFrame(records)
 
         required_features = list(model.feature_names_in_)

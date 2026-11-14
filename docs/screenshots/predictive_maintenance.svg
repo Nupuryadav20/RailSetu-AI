@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <rect width="1200" height="700" fill="#EEF1F4"/>
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="240" height="700" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="24" y="45" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0F172A">RAILSETU <tspan fill="#3B6FE8">AI</tspan></text>
+  <text x="32" y="124" font-family="sans-serif" font-size="13" fill="#475569">Overview</text>
+  <rect x="16" y="145" width="208" height="38" rx="8" fill="#EFF6FF"/>
+  <text x="32" y="169" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1D4ED8">Predictive Maintenance</text>
+  <text x="32" y="210" font-family="sans-serif" font-size="13" fill="#475569">Maintenance Requests</text>
+  <text x="32" y="250" font-family="sans-serif" font-size="13" fill="#475569">Block Planning</text>
+  <text x="32" y="290" font-family="sans-serif" font-size="13" fill="#475569">Model Insights</text>
+  <!-- Main -->
+  <rect x="240" y="0" width="960" height="65" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="270" y="38" font-family="sans-serif" font-size="15" font-weight="bold" fill="#0F172A">Predictive Maintenance (Concept A)</text>
+  <!-- Notice -->
+  <rect x="270" y="85" width="895" height="50" rx="12" fill="#EFF6FF" stroke="#BFDBFE"/>
+  <text x="290" y="115" font-family="sans-serif" font-size="12" fill="#1E3A8A">Concept Distinction: Concept A (ML Probability) is separate from Concept B (dataset risk_score) and Concept C (rule-based operational priority).</text>
+  <!-- Form Panel -->
+  <rect x="270" y="155" width="530" height="515" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="295" y="190" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0F172A">Rolling Stock &amp; Track Telemetry (30 Features)</text>
+  <rect x="295" y="210" width="150" height="32" rx="6" fill="#F9FAFB" stroke="#D1D5DB"/>
+  <text x="305" y="230" font-family="sans-serif" font-size="11" fill="#4B5563">Track Temp (°C): 24.0</text>
+  <rect x="460" y="210" width="150" height="32" rx="6" fill="#F9FAFB" stroke="#D1D5DB"/>
+  <text x="470" y="230" font-family="sans-serif" font-size="11" fill="#4B5563">Rail Wear (mm): 14.8</text>
+  <rect x="625" y="210" width="150" height="32" rx="6" fill="#F9FAFB" stroke="#D1D5DB"/>
+  <text x="635" y="230" font-family="sans-serif" font-size="11" fill="#4B5563">Vibration: 6.4</text>
+  <rect x="295" y="620" width="160" height="38" rx="8" fill="#3B6FE8"/>
+  <text x="325" y="644" font-family="sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Run ML Prediction</text>
+  <!-- Prediction Result Panel -->
+  <rect x="825" y="155" width="340" height="330" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="845" y="190" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0F172A">Prediction Result</text>
+  <text x="845" y="240" font-family="sans-serif" font-size="42" font-weight="300" fill="#E11D48">78.4%</text>
+  <rect x="980" y="210" width="165" height="26" rx="13" fill="#FFE4E6"/>
+  <text x="990" y="227" font-family="sans-serif" font-size="11" font-weight="bold" fill="#9F1239">MAINTENANCE REQUIRED</text>
+  <text x="845" y="280" font-family="sans-serif" font-size="12" fill="#4B5563">Model: XGBoost Pipeline (v4)</text>
+  <text x="845" y="305" font-family="sans-serif" font-size="12" fill="#4B5563">Threshold: 0.50 (Conservative fallback)</text>
+  <text x="845" y="340" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0F172A">Top Local SHAP Contributors:</text>
+  <text x="845" y="365" font-family="sans-serif" font-size="11" fill="#E11D48">• rail_wear_mm: +0.0842</text>
+  <text x="845" y="385" font-family="sans-serif" font-size="11" fill="#E11D48">• track_vibration_level: +0.0611</text>
+  <text x="845" y="405" font-family="sans-serif" font-size="11" fill="#E11D48">• bearing_temperature_c: +0.0450</text>
+  <!-- History Panel -->
+  <rect x="825" y="505" width="340" height="165" rx="18" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="845" y="535" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0F172A">Session History (In-Memory Buffer)</text>
+  <text x="845" y="565" font-family="sans-serif" font-size="11" fill="#64748B">15:20:12 — Prob: 78.4% → Class 1</text>
+  <text x="845" y="590" font-family="sans-serif" font-size="11" fill="#64748B">15:18:44 — Prob: 14.2% → Class 0</text>
+  <text x="845" y="615" font-family="sans-serif" font-size="11" fill="#64748B">15:15:02 — Prob: 31.0% → Class 0</text>
+</svg>

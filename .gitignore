@@ -7,6 +7,9 @@ __pycache__/
 data/raw/*
 data/processed/*
 data/synthetic/*
+data/*.db
+data/*.db-shm
+data/*.db-wal
 
 backend/artifacts/*
 !backend/artifacts/.gitkeep
@@ -36,6 +39,8 @@ mlflow.db
 mlflow.db-shm
 mlflow.db-wal
 mlartifacts/
+catboost_info/
+frontend/.vite/
 
 # Local Python environment and test cache
 .venv/
@@ -48,9 +53,40 @@ mlflow.db
 mlflow.db-shm
 mlflow.db-wal
 mlartifacts/
+catboost_info/
+frontend/.vite/
 
 # Local Python environment and test cache
 .venv/
 __pycache__/
 .pytest_cache/
 .coverage
+
+.env
+.venv/
+node_modules/
+data/*.db
+mlflow.db
+.pytest_cache/
+__pycache__/
+.coverage
+.DS_Store
+frontend/dist/
+frontend/.vite/
+
+mlartifacts/
+backend/artifacts/models/random_forest.joblib
+backend/artifacts/backup/
+
+# keep served model artifacts (small), ignore big legacy ones
+!backend/artifacts/
+backend/artifacts/*
+!backend/artifacts/models/
+backend/artifacts/models/*
+!backend/artifacts/models/v4/
+!backend/artifacts/models/v5/
+!backend/artifacts/models/xgboost.joblib
+!backend/artifacts/models/logistic_regression.joblib
+!backend/artifacts/models/best_model.json
+!backend/artifacts/models/model_comparison.csv
+!backend/artifacts/models/model_thresholds.json

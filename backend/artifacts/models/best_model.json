@@ -1,0 +1,6 @@
+{
+    "best_model": "Random Forest",
+    "model_file": "random_forest.joblib",
+    "threshold": 0.3166426548753089,
+    "selection_metric": "F2 Score"
+}

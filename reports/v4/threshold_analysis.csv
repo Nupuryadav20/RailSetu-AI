@@ -1,0 +1,11 @@
+threshold,precision,recall,f1,f2,tp,fp,tn,fn,pct_flagged,operational_note
+0.05,0.2019,1.0,0.336,0.5586,4039,15961,0,0,100.0,Flags nearly everything — not usable
+0.1,0.2019,1.0,0.336,0.5586,4039,15961,0,0,100.0,Flags nearly everything — not usable
+0.15,0.2019,1.0,0.336,0.5586,4039,15961,0,0,100.0,"High recall, low precision — catches most faults, many false alarms"
+0.2,0.202,0.9993,0.336,0.5584,4036,15947,14,3,99.92,"High recall, low precision — catches most faults, many false alarms"
+0.25,0.2022,0.996,0.3361,0.5579,4023,15875,86,16,99.49,Moderate trade-off — reasonable for resource-constrained operations
+0.3,0.2027,0.9795,0.3359,0.5545,3956,15557,404,83,97.56,Moderate trade-off — reasonable for resource-constrained operations
+0.35,0.2042,0.9208,0.3342,0.541,3719,14496,1465,320,91.07,"Conservative — misses many faults, high precision on what it flags"
+0.4,0.2095,0.7796,0.3302,0.5048,3149,11885,4076,890,75.17,"Conservative — misses many faults, high precision on what it flags"
+0.45,0.2253,0.5011,0.3109,0.4026,2024,6959,9002,2015,44.92,Very conservative — flags very little; model close to useless at this threshold
+0.5,0.2863,0.2419,0.2622,0.2496,977,2435,13526,3062,17.06,Very conservative — flags very little; model close to useless at this threshold

@@ -15,9 +15,11 @@ function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/prediction" element={<PredictiveMaintenance />} />
+        <Route path="/predictive" element={<PredictiveMaintenance />} />
         <Route path="/maintenance" element={<Maintenance />} />
         <Route path="/planning" element={<BlockPlanning />} />
         <Route path="/insights" element={<ModelInsights />} />
+        <Route path="/model-insights" element={<ModelInsights />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />
       </Route>

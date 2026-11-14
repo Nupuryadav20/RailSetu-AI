@@ -9,6 +9,8 @@ class Settings(BaseSettings):
     APP_VERSION: str = "1.0.0"
     APP_ENV: str = "development"
     DEBUG: bool = False
+    CORS_ORIGINS: str = "http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173,http://127.0.0.1:3000"
+    DATABASE_URL: str = "sqlite:///data/railsetu.db"
 
     model_config = SettingsConfigDict(
         env_file=".env",

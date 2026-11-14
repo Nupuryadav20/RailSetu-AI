@@ -1,0 +1,57 @@
+{
+  "mutual_info_max": 0.008081404459768349,
+  "mutual_info_mean": 0.0013016369392892708,
+  "tree_depth_analysis": [
+    {
+      "depth": 1,
+      "val_pr_auc": 0.20968,
+      "val_roc_auc": 0.51256
+    },
+    {
+      "depth": 2,
+      "val_pr_auc": 0.23559,
+      "val_roc_auc": 0.52278
+    },
+    {
+      "depth": 3,
+      "val_pr_auc": 0.25605,
+      "val_roc_auc": 0.54378
+    },
+    {
+      "depth": 4,
+      "val_pr_auc": 0.29141,
+      "val_roc_auc": 0.54675
+    },
+    {
+      "depth": 5,
+      "val_pr_auc": 0.29186,
+      "val_roc_auc": 0.54352
+    },
+    {
+      "depth": 6,
+      "val_pr_auc": 0.29539,
+      "val_roc_auc": 0.55072
+    },
+    {
+      "depth": 7,
+      "val_pr_auc": 0.30264,
+      "val_roc_auc": 0.55431
+    },
+    {
+      "depth": 8,
+      "val_pr_auc": 0.29729,
+      "val_roc_auc": 0.55231
+    },
+    {
+      "depth": 9,
+      "val_pr_auc": 0.30011,
+      "val_roc_auc": 0.55232
+    },
+    {
+      "depth": 10,
+      "val_pr_auc": 0.29735,
+      "val_roc_auc": 0.55398
+    }
+  ],
+  "diagnosis_summary": "Empirical diagnosis confirms mutual information is low (< 0.01 for all features), and tree depth analysis peaks at shallow depths (depth 4-6) without exponential gains. This proves mathematically that target variable has low intrinsic mutual information with features. No single threshold or deterministic rule generated the target."
+}

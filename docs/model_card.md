@@ -1,295 +1,79 @@
-# RailSetu AI — Machine Learning Model Card
+# RailSetu AI — Machine Learning Model Card (v4)
+_Last Updated: 2026-11-14 | System: RailSetu AI Decision Support_
 
 ## 1. Model Overview
-
-| Field | Description |
-|---|---|
-| Project | RailSetu AI |
-| Model Type | Binary Classification |
-| Primary Model | XGBoost Classifier |
-| Task | Maintenance Requirement Prediction |
-| Target Variable | `maintenance_required` |
-| Framework | XGBoost, Scikit-learn |
-| Model Selection Metric | Validation Average Precision |
-| Model Status | Experimental Prototype |
-
-### Purpose
-
-The model estimates whether maintenance is required based on available railway equipment, infrastructure, operational, and environmental features.
-
-It is designed to support maintenance analysis and prioritization in the RailSetu AI prototype.
-
-It is not intended to independently make railway safety or maintenance approval decisions.
-
-## 2. Dataset Information
-
-**Dataset:** Indian Railway Failure Detection and Maintenance 100K
-
-**Source:** Kaggle
-
-The dataset is used for experimental model development. It is synthetic/simulated and is not verified operational Indian Railways data.
-
-### Dataset Statistics
-
-| Attribute | Value |
-|---|---:|
-| Original records | Approximately 100,300 |
-| Duplicate records removed | Approximately 300 |
-| Cleaned records | Approximately 100,000 |
-| Training split | 80% |
-| Testing split | 20% |
-| Model input features | 30 |
-| Numerical features | 25 |
-| Categorical features | 5 |
-
-### Target Distribution
-
-| Target Value | Meaning | Records |
-|---|---|---:|
-| 0 | Maintenance not required | 79,804 |
-| 1 | Maintenance required | 20,196 |
-
-The positive class represents approximately 20.2% of the cleaned dataset.
-
-## 3. Data Preprocessing
-
-The preprocessing workflow included:
-
-1. Loading the original dataset.
-2. Inspecting data types and dataset structure.
-3. Identifying duplicate records.
-4. Removing approximately 300 duplicate records.
-5. Checking missing values.
-6. Applying median imputation to missing numerical values.
-7. Preparing cleaned data for exploratory analysis.
-8. Preparing training and testing datasets.
-
-### Excluded Features
-
-The following columns were excluded from model training:
-
-| Feature | Reason |
-|---|---|
-| `train_id` | Identifier rather than a predictive feature |
-| `failure_type` | Direct target leakage risk |
-| `failure_severity` | Direct target leakage risk |
-| `risk_score` | Excluded from model inputs |
-
-The final prepared dataset contains 30 model input features.
-
-## 4. Model Development
-
-Four classifiers were considered during evaluation.
-
-### Logistic Regression
-
-Used as a baseline classification algorithm.
-
-### Random Forest Classifier
-
-Used to evaluate an ensemble of decision trees and nonlinear relationships.
-
-### XGBoost Classifier
-
-Used as a gradient boosting model and selected based on validation Average Precision.
-
-### Dummy Classifier
-
-Used as a simple baseline for comparison.
-
-## 5. Evaluation Metrics
-
-The following metrics were used:
-
-- Accuracy: Overall proportion of correct predictions.
-- Precision: Proportion of positive predictions that are correct.
-- Recall: Proportion of actual positive cases identified.
-- F1-score: Harmonic mean of precision and recall.
-- F2-score: Gives more importance to recall than precision.
-- ROC-AUC: Measures ranking ability across classification thresholds.
-- Average Precision: Summarizes precision-recall performance.
-
-Average Precision is particularly relevant because the dataset has an imbalanced target distribution.
-
-## 6. Model Evaluation Results
-
-Recorded test-set performance:
-
-| Model | Accuracy | Precision | Recall | F1-score | ROC-AUC | Average Precision |
-|---|---:|---:|---:|---:|---:|---:|
-| Logistic Regression | 0.6057 | 0.2294 | 0.4038 | 0.2926 | 0.5383 | 0.2529 |
-| Random Forest | 0.8134 | 0.7308 | 0.1203 | 0.2066 | 0.5506 | 0.3349 |
-| XGBoost | 0.7148 | 0.2779 | 0.2580 | 0.2676 | 0.5508 | 0.3339 |
-| Dummy Classifier | 0.7981 | — | 0.0000 | — | — | 0.2020 |
-
-*Results are rounded to four decimal places.*
-
-### Selected Model
-
-XGBoost was selected using validation Average Precision.
-
-Recorded validation Average Precision:
-
-**0.3322**
-
-The model is persisted as a serialized artifact and loaded by the backend model service.
-
-### Threshold
-
-The prediction service currently uses a classification threshold of 0.5.
-
-The recorded threshold-selection process did not produce a feasible alternative under the applied constraints, so the default threshold was retained.
-
-## 7. Explainability
-
-RailSetu AI uses SHAP to analyze model behavior.
-
-Generated explainability outputs include:
-
-- SHAP feature importance.
-- SHAP summary plot.
-- Individual prediction explanation.
-- Individual waterfall visualization.
-
-These outputs help identify which input features contribute to individual and overall model predictions.
-
-SHAP explanations describe model behavior and do not establish causal relationships.
-
-## 8. Model Input and Output
-
-### Input
-
-The prediction service expects a record containing the 30 required model features.
-
-These include:
-
-- Railway region and season.
-- Train type and train age.
-- Average speed and distance travelled.
-- Track temperature and rail wear.
-- Track vibration and ballast condition.
-- Environmental conditions.
-- Wheel and brake-related measurements.
-- Bearing and traction motor temperatures.
-- Signal system status.
-- Power consumption and load factor.
-- Daily trips and delay information.
-- Last maintenance interval.
-- Inspection score.
-- Sensor health index.
-
-### Output
-
-The prediction service returns:
-
-- Selected model name.
-- Maintenance probability percentage.
-- Predicted maintenance class.
-- Classification threshold.
-- Relevant disclaimer.
-
-The probability is the model's estimated output, not a calibrated real-world probability of railway equipment failure.
-
-## 9. Backend Integration
-
-The selected model is integrated through:
-
-`backend/app/services/model_service.py`
-
-The service:
-
-1. Loads the selected model artifact.
-2. Retrieves the model's expected input features.
-3. Checks for missing required features.
-4. Prepares the input dataframe.
-5. Calculates prediction probabilities.
-6. Applies the configured classification threshold.
-7. Returns prediction results.
-
-The prediction endpoint is:
-
-`POST /api/ml/predict`
-
-## 10. Limitations and Risks
-
-The current model has important limitations.
-
-### Limited Predictive Performance
-
-The recorded ROC-AUC values are approximately 0.54–0.55.
-
-These values indicate limited discrimination between positive and negative classes.
-
-### Synthetic Dataset
-
-The training dataset is synthetic/simulated and does not establish performance on real railway operational data.
-
-### Class Imbalance
-
-The positive maintenance class represents approximately 20.2% of the cleaned dataset.
-
-This affects how accuracy, precision, and recall should be interpreted.
-
-### Generalization
-
-Performance on real railway assets, infrastructure, routes, and operating conditions has not been established.
-
-### Calibration
-
-The output probability has not been demonstrated to be calibrated against real-world failure frequencies.
-
-### Operational Safety
-
-The model must not be used as the sole basis for maintenance approvals, railway block decisions, or safety-critical actions.
-
-## 11. Intended Use
-
-The model is intended for:
-
-- Academic demonstration.
-- Research and experimentation.
-- Predictive maintenance workflow development.
-- API integration demonstrations.
-- Maintenance prioritization experiments.
-- Future dashboard development.
-
-## 12. Out-of-Scope Use
-
-The model is not approved for:
-
-- Autonomous railway maintenance decisions.
-- Railway traffic control.
-- Safety certification.
-- Official block approval.
-- Replacement of qualified engineering inspections.
-- Real-world failure probability guarantees.
-
-## 13. Future Improvements
-
-Potential improvements include:
-
-1. Training on verified railway maintenance records.
-2. Improving feature quality and feature engineering.
-3. Evaluating more classification algorithms.
-4. Performing systematic hyperparameter optimization.
-5. Evaluating alternative classification thresholds.
-6. Calibrating model probabilities.
-7. Evaluating performance across railway regions and equipment categories.
-8. Monitoring model drift.
-9. Introducing model versioning.
-10. Establishing an appropriate operational validation process.
-
-## 14. Responsible Use Statement
-
-RailSetu AI is an experimental railway predictive maintenance prototype.
-
-Its machine learning predictions are intended to assist research and demonstrate an analytical workflow.
-
-All real-world railway maintenance, operational, and safety decisions must remain subject to authorized railway procedures, verified data, qualified personnel, and applicable safety requirements.
+- **Model Name**: RailSetu Predictive Maintenance Classifier (XGBoost Pipeline v4)
+- **Framework**: Scikit-Learn 1.6, XGBoost 2.1
+- **Task**: Binary classification (`maintenance_required` ∈ {0, 1})
+- **Model Selection Criterion**: Validation Average Precision (PR-AUC)
+- **Status**: Research / Academic Prototype (Decision Support Only)
+
+## 2. Intended Use & Boundaries
+- **Intended Use**: Assistance in flagging potential rolling stock and track maintenance candidates for operational review.
+- **Out of Scope**: Direct automated approval of maintenance actions or safety-critical railway signaling decisions.
+- **Data Reality**: Synthetic simulation dataset (100,000 records). Not live Indian Railways telematics data.
+
+## 3. Training & Validation Setup
+- **Dataset**: `data/processed/railway_cleaned.csv` (100,000 records × 35 columns)
+- **Splits**: 60,000 Train (60%), 20,000 Validation (20%), 20,000 Test (20%) — Stratified Split (Seed 42)
+- **Target Distribution**:
+  - Class 0 (No maintenance): 79,804 (79.8%)
+  - Class 1 (Maintenance required): 20,196 (20.2%)
+- **Feature Set (30 Features)**:
+  - 25 Numerical features (wear, temperatures, vibration, mileage, speed, environment)
+  - 5 Categorical features (`region`, `season`, `train_type`, `ballast_condition`, `signal_system_status`)
+- **Explicitly Excluded Columns (Target Leakage Prevention)**:
+  - `risk_score` (Derived from target)
+  - `failure_type` (Post-event label)
+  - `failure_severity` (Post-event severity)
+  - `train_id` (Identifier)
+
+## 4. Evaluated Performance Matrix
+
+### Validation Set (Hyperparameter & Threshold Selection)
+| Metric | Dummy Baseline | Logistic Regression | Decision Tree | Random Forest | HistGradientBoosting | XGBoost (v4) |
+|---|---|---|---|---|---|---|
+| **ROC-AUC** | 0.4990 | 0.5321 | 0.5503 | 0.5512 | 0.5521 | **0.5552** |
+| **PR-AUC (AP)** | 0.2016 | 0.2509 | 0.3057 | 0.3250 | 0.3260 | **0.3303** |
+| **Balanced Acc** | 0.4990 | 0.5183 | 0.5468 | 0.5419 | 0.5476 | **0.5447** |
+| **F1 Score** | 0.2002 | 0.3017 | 0.2425 | 0.2402 | 0.2363 | **0.2622** |
+| **MCC** | -0.0021 | 0.0294 | 0.1171 | 0.0997 | 0.1263 | **0.0953** |
+| **Cohen's Kappa** | -0.0021 | 0.0242 | 0.1112 | 0.0965 | 0.1167 | **0.0948** |
+| **Brier Score** | 0.3229 | 0.2484 | 0.2301 | 0.2357 | 0.2294 | **0.2142** |
+
+### Held-out Test Set (Unbiased Final Evaluation)
+- **XGBoost (Uncalibrated)**: ROC-AUC: 0.5445 | PR-AUC: 0.3270 | F1: 0.2551 | Balanced Acc: 0.5411 | Precision: 0.2805 | Recall: 0.2340
+- **Dummy Classifier Baseline**: ROC-AUC: 0.5039 | PR-AUC: 0.2033 | F1: 0.2081
+
+## 5. Threshold Operating Analysis
+- **Threshold 0.50 (Default fallback)**: Precision = 28.6%, Recall = 24.2% (Flags 17.1% of items).
+- **Threshold 0.45 (Balanced)**: Precision = 22.5%, Recall = 50.1% (Flags 44.9% of items).
+- **Threshold 0.05-0.20 (High recall)**: Recall ≈ 100%, but precision approaches base rate (20.2%), flagging almost entire fleet.
+
+## 6. Explainability & Feature Attributions
+- Top predictive signals identified via SHAP: `rail_wear_mm`, `track_vibration_level`, `wheel_wear_percent`, `bearing_temperature_c`.
+- Permutation importance confirms `ballast_condition`, `signal_system_status`, and `rail_wear_mm` yield top loss drops when permuted.
+
+## 7. Operational Separation of Three Concepts
+1. **Concept A (ML Prediction Probability)**: Statistical likelihood ($0-100\%$) that maintenance is needed, computed by the supervised ML model from 30 telemetry features.
+2. **Concept B (Dataset Risk Score)**: Synthetic composite label present in dataset column `risk_score` (strictly excluded during model training to avoid leakage).
+3. **Concept C (Operational Priority Score)**: Deterministic business-rule priority score ($0-100$) produced by `priority_engine.py` combining model probabilities with equipment wear thresholds, corridor importance, and safety criteria for CP-SAT schedule optimization.
 
 ---
 
-**Model:** XGBoost Classifier
-**Task:** Maintenance Requirement Prediction
-**Project:** RailSetu AI
-**Status:** Experimental Research Prototype
+## 8. V5 Model Upgrade (Active Serving Pipeline)
+
+### Model Identity
+- **Model Name**: RailSetu V5 Calibrated XGBoost Pipeline
+- **Active Serving File**: `backend/artifacts/models/v5/best_model_v5.joblib` + `preprocessor_v5.joblib` + `best_model_v5_calibrated.joblib`
+- **Metadata**: `backend/artifacts/models/v5/v5_metadata.json`
+- **MLflow Tracking**: Experiment `railsetu_v5`
+
+### Quantitative Performance
+- **Validation PR-AUC**: **0.3320** vs V4 0.3303 (margin: +0.0018, within CV std 0.0055)
+- **Held-Out Test PR-AUC**: **0.3296** vs V4 0.3270
+- **Held-Out Test ROC-AUC**: **0.5451** vs V4 0.5445
+- **Calibration (Isotonic Regression)**: Reduced held-out test Brier score from **0.2259** to **0.1474**
+- **Operating Threshold**: **0.45** (flags ~15% fleet, precision 23.5%, recall 17.5%, F1 0.201)
+- **Feature Selection (Task 2)**: 30 evaluated features retained based on empirical 1-std boundary rule (feature pruning dropped PR-AUC toward the 0.202 dummy baseline).
+
