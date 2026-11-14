@@ -15,3 +15,42 @@ backend/artifacts/*
 node_modules/
 dist/
 build/
+# Python testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+
+# Local MLflow tracking data
+mlflow.db
+mlflow.db-shm
+mlflow.db-wal
+mlartifacts/
+
+# Local Python environment and test cache
+.venv/
+__pycache__/
+.pytest_cache/
+.coverage
+
+# Local MLflow tracking data
+mlflow.db
+mlflow.db-shm
+mlflow.db-wal
+mlartifacts/
+
+# Local Python environment and test cache
+.venv/
+__pycache__/
+.pytest_cache/
+.coverage
